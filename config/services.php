@@ -30,4 +30,14 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'firebase' => [
+        'apiKey' => 'AIzaSyDcLClJjBMeIK2vW8p2261vCbwwuosrIPQ',
+        'authDomain' => "taman-literasi.firebaseapp.com",
+        'storageBucket' => "taman-literasi.appspot.com",
+        'projectId' => "taman-literasi",
+        'messagingSenderId' => "742020242615",
+        'appId' => "1:742020242615:web:ced56698ad355fe46a8132",
+        'measurementId' => "G-GRTERYTF2T",
+    ],
+
 ];
