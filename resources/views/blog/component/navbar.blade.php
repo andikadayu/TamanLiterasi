@@ -1,7 +1,7 @@
 <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo"><a href="index.html">Taman Literasi</a></h1>
+      <h1 class="logo"><a href="#">Taman Literasi</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -17,12 +17,14 @@
             <li class="@yield('nv-active')">
               <a href="{{route('blogs')}}">Novel</a>
             </li>
+            @if (session('is_login') == true)
             <li class="@yield('cl-active')">
                 <a href="{{route('collection')}}">Collection</a>
             </li>
+            @endif
             <li class="@yield('fr-active')">
-              <a href="portfolio.html">Forums</a>
-          </li>
+              <a href="#">Forums</a>
+            </li>                
         </ul>
 
       </nav><!-- .nav-menu -->

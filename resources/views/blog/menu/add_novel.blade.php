@@ -21,22 +21,22 @@
     <section id="blog" class="blog">
       <div class="container">
          <div class="reply-form">
-            <h2>Add Article </h2><br>
+            <h2>Add Novel </h2><br>
             {{-- ini Input Article baru--}}
-            <form id="save_article" onsubmit="add_article();return false;" method="POST" autocomplete="off">
+            <form id="save_novel" onsubmit="add_novel();return false;" method="POST" autocomplete="off">
                 {{ csrf_field() }}
                 <div class="form-group">
-                    <h4>Article Title</h4>
-                    <input type="text" name="nama_artikel" id="nama_artikel" class="form-control" required>
+                    <h4>Novel Title</h4>
+                    <input type="text" name="nama_novel" id="nama_novel" class="form-control" required>
                 </div>
                 <div class="form-group">
-                    <h4>Article Image</h4>
+                    <h4>Novel Cover</h4>
                     <img id="output" height="100%" width="100%"/>
-                    <input type="file" name="foto_artikel" id="foto_artikel" accept="image/*" class="form-control" onchange="loadFile(event)" required>
+                    <input type="file" name="foto_novel" id="foto_novel" accept="image/*" class="form-control" onchange="loadFile(event)" required>
                 </div>
                 <div class="form-group">
-                    <h4>Article Content</h4>
-                    <textarea name="isi_artikel" id="summernote" class="form-control" required></textarea>
+                    <h4>Synopsis</h4>
+                    <textarea name="sinopsis" id="summernote" class="form-control" required></textarea>
                 </div>
 
                 <input type="submit" value="Upload" class="btn btn-success btn-lg">
@@ -60,15 +60,15 @@
   };
 </script>
 <script>
-    function add_article() {
+    function add_novel() {
         $.ajax({
             headers: {
                 'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
             },
-            url: "{{route('add_article_proccess')}}",
+            url: "{{route('novel_proccess')}}",
             processData: false,
             contentType: false,
-            data: new FormData($('#save_article')[0]),
+            data: new FormData($('#save_novel')[0]),
             type: 'post',
             method: 'post'
         }).done(function (data) {

@@ -26,3 +26,9 @@ Route::get('article/{detail}', 'BlogController@detailBlog')->name('detail_blogs'
 Route::get('collection', 'CollectionController@index')->name('collection');
 Route::get('collection/article/add', 'CollectionController@add_article')->name('add_article');
 Route::post('collection/article/add_proccess', 'CollectionController@article_proccess')->name('add_article_proccess');
+Route::get('collection/article/{id}', 'CollectionController@viewEdit')->name('viewEdit');
+Route::post('collection/article/update_proccess', 'CollectionController@article_update')->name('update_article_proccess');
+Route::get('collection/article/delete', 'CollectionController@article_delete')->name('article_delete');
+
+Route::get('collection/novel/add', 'CollectionController@add_novel')->name('add_novel');
+Route::post('collection/novel/add_process', 'CollectionController@novel_proccess')->name('novel_proccess');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\MArticle;
+use App\MNovel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Session;
@@ -11,7 +12,7 @@ class CollectionController extends Controller
 {
     public function index()
     {
-        $article = MArticle::join('user', 'user.id', '=', 'tb_artikel.upload_by')->where('upload_by', Session::get('id'))->get();
+        $article = MArticle::join('user', 'user.id', '=', 'tb_artikel.upload_by')->where('upload_by', Session::get('id'))->orderBy('tb_artikel.id', 'DESC')->get();
         return view('blog.menu.collection', [
             'article' => $article
         ]);
@@ -38,6 +39,90 @@ class CollectionController extends Controller
 
         $save = $article->save();
 
+        if ($save) {
+            return 'success';
+        } else {
+            return 'error';
+        }
+    }
+
+    public function viewEdit($id)
+    {
+        $article = MArticle::where('id', base64_decode($id))->get();
+        return view('blog.menu.update_article', [
+            'article' => $article
+        ]);
+    }
+
+    public function article_update(Request $request)
+    {
+        $article = MArticle::find(base64_decode($request->input('id')));
+        $article->nama_artikel = $request->input('nama_artikel');
+        $article->isi_artikel = $request->input('isi_artikel');
+        $article->last_update = date('Y-m-d');
+
+        if ($request->hasFile('foto_artikel')) {
+            $artBefore = $this->check_article(base64_decode($request->input('id')))->foto_artikel;
+            unlink(storage_path('app/public/laporan' . $artBefore));
+
+            $extension = $request->file('foto_artikel')->extension();
+            $imgname = rand(0, 50000) . '_' . 'Article' . '_' . date('dmyHis') . '.' . $extension;
+            Storage::putFileAs('public/article', $request->file('foto_artikel'), $imgname);
+
+            $article->foto_artikel = $imgname;
+        }
+
+        $update = $article->save();
+
+        if ($update) {
+            return 'success';
+        } else {
+            return 'error';
+        }
+    }
+
+    public function check_article($id)
+    {
+        return MArticle::where('id', $id)->first();
+    }
+
+    public function article_delete(Request $request)
+    {
+        $artBefore = $this->check_article(base64_decode($request->get('id')))->foto_artikel;
+        unlink(storage_path('app/public/laporan' . $artBefore));
+
+        $article = MArticle::find($request->get('id'));
+        $delete = $article->delete();
+
+        if ($delete) {
+            return 'success';
+        } else {
+            return 'error';
+        }
+    }
+
+    // Novel Collection Controoller 
+
+    public function add_novel()
+    {
+        return view('blog.menu.add_novel');
+    }
+
+    public function novel_proccess(Request $request)
+    {
+        $extension = $request->file('foto_novel')->extension();
+        $imgname = rand(0, 50000) . '_' . 'Novel' . '_' . date('dmyHis') . '.' . $extension;
+        Storage::putFileAs('public/novel', $request->file('foto_novel'), $imgname);
+
+        $novel = new MNovel();
+        $novel->id_kategori = 2;
+        $novel->nama_novel = $request->input('nama_novel');
+        $novel->sinopsis = $request->input('sinopsis');
+        $novel->author = Session::get('id');
+        $novel->published_at = date('Y-m-d');
+        $novel->foto_novel = $imgname;
+
+        $save = $novel->save();
         if ($save) {
             return 'success';
         } else {

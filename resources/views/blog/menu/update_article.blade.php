@@ -21,25 +21,29 @@
     <section id="blog" class="blog">
       <div class="container">
          <div class="reply-form">
-            <h2>Add Article </h2><br>
+            <h2>Update Article </h2><br>
             {{-- ini Input Article baru--}}
-            <form id="save_article" onsubmit="add_article();return false;" method="POST" autocomplete="off">
+            <form id="save_article" onsubmit="update_article();return false;" method="POST" autocomplete="off">
+                @foreach($article as $art)
                 {{ csrf_field() }}
+                <input type="hidden" name="id" value="{{base64_encode($art->id)}}">
                 <div class="form-group">
                     <h4>Article Title</h4>
-                    <input type="text" name="nama_artikel" id="nama_artikel" class="form-control" required>
+                    <input type="text" name="nama_artikel" id="nama_artikel" value="{{$art->nama_artikel}}" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <h4>Article Image</h4>
-                    <img id="output" height="100%" width="100%"/>
-                    <input type="file" name="foto_artikel" id="foto_artikel" accept="image/*" class="form-control" onchange="loadFile(event)" required>
+                    <img id="output" height="100%" width="100%" src="../../storage/article/{{$art->foto_artikel}}"/>
+                    <input type="file" name="foto_artikel" id="foto_artikel" accept="image/*" class="form-control" onchange="loadFile(event)">
+                    <small>*Leave this blank if you don't want to change</small>
                 </div>
                 <div class="form-group">
                     <h4>Article Content</h4>
-                    <textarea name="isi_artikel" id="summernote" class="form-control" required></textarea>
+                    <textarea name="isi_artikel" id="summernote" class="form-control" required>{!! $art->isi_artikel !!}</textarea>
                 </div>
 
                 <input type="submit" value="Upload" class="btn btn-success btn-lg">
+                @endforeach
             </form>
 
         </div> 
@@ -60,12 +64,12 @@
   };
 </script>
 <script>
-    function add_article() {
+    function update_article() {
         $.ajax({
             headers: {
                 'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
             },
-            url: "{{route('add_article_proccess')}}",
+            url: "{{route('update_article_proccess')}}",
             processData: false,
             contentType: false,
             data: new FormData($('#save_article')[0]),

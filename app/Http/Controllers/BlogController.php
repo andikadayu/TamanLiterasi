@@ -9,7 +9,7 @@ class BlogController extends Controller
 {
     public function viewBlog()
     {
-        $article = MArticle::join('user', 'user.id', '=', 'tb_artikel.upload_by')->paginate(9);
+        $article = MArticle::join('user', 'user.id', '=', 'tb_artikel.upload_by')->orderBy('tb_artikel.id', 'DESC')->paginate(9);
         return view("blog.menu.blogging", [
             'article' => $article
         ]);

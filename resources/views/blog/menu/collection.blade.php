@@ -50,8 +50,8 @@
                 <div class="read-more">
                   <a href="{{url('article').'/' }}{{$art->nama_artikel}}">Read More</a>
                 </div>
-                <a href="" class="btn btn-info">Edit</a>
-                <a href="" class="btn btn-warning">Delete</a>
+                <a href="{{url()->current().'/'}}{{'article/'.base64_encode($art->id)}}" class="btn btn-info">Edit</a>
+                <a onclick="delete_article('{{base64_encode($art->id)}}')" class="btn btn-warning">Delete</a>
               </div>
 
             </article><!-- End blog entry -->
@@ -59,7 +59,7 @@
         @endforeach
         </div>
 
-        <h2>Novel <a class="btn btn-warning icofont-plus "> Add Novel</a></h2>
+        <h2>Novel <a class="btn btn-warning icofont-plus " href="{{route('add_novel')}}"> Add Novel</a></h2>
         <div class="row">
         {{-- ini list novel  --}}
         </div>
@@ -69,4 +69,21 @@
     </section><!-- End Blog Section -->
 
   </main>
+@endsection
+@section('js')
+    <script>
+      function delete_article(id) {
+        var r = confirm("Are you sure to delete this?");
+        if(r == true){
+          $.ajax({
+            url : {{route('article_delete')}},
+            data:{id:id},
+            method:'GET',
+          }).done(function (data) {
+            console.log(data);
+            location.reload();
+          })
+        }
+      }
+    </script>
 @endsection
