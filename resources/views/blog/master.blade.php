@@ -30,6 +30,7 @@
 
   <!-- Template Main CSS File -->
   <link href="{{asset('blog/css/style.css')}}" rel="stylesheet">
+  <link href="{{asset('blog/css/chat.css')}}" rel="stylesheet">
 
   <link rel="stylesheet" href="{{asset('blog/summernote/summernote-bs4.min.css')}}">
 
@@ -155,9 +156,19 @@ function login_oauth(id,name,img,email) {
 </script>
 <script>
   function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
+    firebase.auth().signOut().then(() => {
       console.log('User signed out.');
+      $.ajax({
+        url : "{{route('logout')}}",
+        method : "GET",
+      }).done(function (data) {
+        if(data == 'success'){
+          location.href = 'home';
+        }
+      })
+      
+    }).catch((error) => {
+      console.log(error);
     });
   }
 </script>

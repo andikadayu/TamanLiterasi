@@ -23,7 +23,7 @@
             </li>
             @endif
             <li class="@yield('fr-active')">
-              <a href="#">Forums</a>
+              <a href="{{route('forums')}}">Forums</a>
             </li>                
         </ul>
 
@@ -35,7 +35,7 @@
       <div class="ml-auto">
         <img src="{{session('img')}}" class="rounded-circle float-left" style="width: 10%;height: 10%;" alt="">
         {{session('name')}}
-        <a class="get-started-btn" onclick="signOut()" href="{{route('logout')}}">Logout</a>
+        <a class="get-started-btn" onclick="signOut()">Logout</a>
       </div>
       @endif
     </div>

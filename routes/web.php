@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,3 +34,12 @@ Route::get('collection/article/delete', 'CollectionController@article_delete')->
 
 Route::get('collection/novel/add', 'CollectionController@add_novel')->name('add_novel');
 Route::post('collection/novel/add_process', 'CollectionController@novel_proccess')->name('novel_proccess');
+
+
+Route::get('forums', 'ForumController@index')->name('forums');
+Route::post('forums/send', 'ForumController@chat_forums')->name('chat_forums');
+
+Route::get('clear-cache', function () {
+    Artisan::call('cache:clear');
+    return 'success';
+});

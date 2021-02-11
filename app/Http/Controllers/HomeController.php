@@ -55,6 +55,6 @@ class HomeController extends Controller
     function logout()
     {
         Session::flush();
-        return redirect('home');
+        return 'success';
     }
 }
