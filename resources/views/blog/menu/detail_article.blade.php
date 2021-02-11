@@ -40,7 +40,7 @@
                 <ul>
                   <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="#">{{$art->name}}</a></li>
                   <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <a href="#"><time datetime="{{$art->upload_at}}">{{\Carbon\Carbon::parse($art->upload_at)->isoFormat('MMM DD,YYYY')}}</time></a></li>
-                  <li class="d-flex align-items-center"><i class="icofont-comment"></i> <a href="#">12 Comments</a></li>
+                  <li class="d-flex align-items-center"><i class="icofont-comment"></i> <a href="#">{{$jkomentar}} Comments</a></li>
                 </ul>
               </div>
 
@@ -72,102 +72,41 @@
 
             <div class="blog-comments">
 
-              <h4 class="comments-count">8 Comments</h4>
-
+              <h4 class="comments-count">{{$jkomentar}} Comments <i class="icofont-refresh" onclick="location.reload();"></i> </h4>
+              @foreach ($komentar as $k)
+              
               <div id="comment-1" class="comment clearfix">
-                <img src="assets/img/comments-1.jpg" class="comment-img  float-left" alt="">
-                <h5><a href="">Georgia Reader</a> <a href="#" class="reply"><i class="icofont-reply"></i> Reply</a></h5>
-                <time datetime="2020-01-01">01 Jan, 2020</time>
+                <img src="{{$k->img}}" class="comment-img  float-left" alt="">
+                <h5><a href="#">{{$k->name}} @if($k->upload_by == $k->id_user) <i class="icofont-edit-alt" style="color: #1f9fff; font-weight: 560;">Author</i> @endif</a></h5>
+                <time datetime="{{$k->tanggal}}">{{\Carbon\Carbon::parse($k->tanggal)->isoFormat('MMM DD,YYYY HH:mm')}}</time>
                 <p>
-                  Et rerum totam nisi. Molestiae vel quam dolorum vel voluptatem et et. Est ad aut sapiente quis molestiae est qui cum soluta.
-                  Vero aut rerum vel. Rerum quos laboriosam placeat ex qui. Sint qui facilis et.
+                  {{$k->isi_chat}}
                 </p>
-
+                
               </div><!-- End comment #1 -->
+              @endforeach
 
-              <div id="comment-2" class="comment clearfix">
-                <img src="assets/img/comments-2.jpg" class="comment-img  float-left" alt="">
-                <h5><a href="">Aron Alvarado</a> <a href="#" class="reply"><i class="icofont-reply"></i> Reply</a></h5>
-                <time datetime="2020-01-01">01 Jan, 2020</time>
-                <p>
-                  Ipsam tempora sequi voluptatem quis sapiente non. Autem itaque eveniet saepe. Officiis illo ut beatae.
-                </p>
+              {{ $komentar->links() }}
 
-                <div id="comment-reply-1" class="comment comment-reply clearfix">
-                  <img src="assets/img/comments-3.jpg" class="comment-img  float-left" alt="">
-                  <h5><a href="">Lynda Small</a> <a href="#" class="reply"><i class="icofont-reply"></i> Reply</a></h5>
-                  <time datetime="2020-01-01">01 Jan, 2020</time>
-                  <p>
-                    Enim ipsa eum fugiat fuga repellat. Commodi quo quo dicta. Est ullam aspernatur ut vitae quia mollitia id non. Qui ad quas nostrum rerum sed necessitatibus aut est. Eum officiis sed repellat maxime vero nisi natus. Amet nesciunt nesciunt qui illum omnis est et dolor recusandae.
-
-                    Recusandae sit ad aut impedit et. Ipsa labore dolor impedit et natus in porro aut. Magnam qui cum. Illo similique occaecati nihil modi eligendi. Pariatur distinctio labore omnis incidunt et illum. Expedita et dignissimos distinctio laborum minima fugiat.
-
-                    Libero corporis qui. Nam illo odio beatae enim ducimus. Harum reiciendis error dolorum non autem quisquam vero rerum neque.
-                  </p>
-
-                  <div id="comment-reply-2" class="comment comment-reply clearfix">
-                    <img src="assets/img/comments-4.jpg" class="comment-img  float-left" alt="">
-                    <h5><a href="">Sianna Ramsay</a> <a href="#" class="reply"><i class="icofont-reply"></i> Reply</a></h5>
-                    <time datetime="2020-01-01">01 Jan, 2020</time>
-                    <p>
-                      Et dignissimos impedit nulla et quo distinctio ex nemo. Omnis quia dolores cupiditate et. Ut unde qui eligendi sapiente omnis ullam. Placeat porro est commodi est officiis voluptas repellat quisquam possimus. Perferendis id consectetur necessitatibus.
-                    </p>
-
-                  </div><!-- End comment reply #2-->
-
-                </div><!-- End comment reply #1-->
-
-              </div><!-- End comment #2-->
-
-              <div id="comment-3" class="comment clearfix">
-                <img src="assets/img/comments-5.jpg" class="comment-img  float-left" alt="">
-                <h5><a href="">Nolan Davidson</a> <a href="#" class="reply"><i class="icofont-reply"></i> Reply</a></h5>
-                <time datetime="2020-01-01">01 Jan, 2020</time>
-                <p>
-                  Distinctio nesciunt rerum reprehenderit sed. Iste omnis eius repellendus quia nihil ut accusantium tempore. Nesciunt expedita id dolor exercitationem aspernatur aut quam ut. Voluptatem est accusamus iste at.
-                  Non aut et et esse qui sit modi neque. Exercitationem et eos aspernatur. Ea est consequuntur officia beatae ea aut eos soluta. Non qui dolorum voluptatibus et optio veniam. Quam officia sit nostrum dolorem.
-                </p>
-
-              </div><!-- End comment #3 -->
-
-              <div id="comment-4" class="comment clearfix">
-                <img src="assets/img/comments-6.jpg" class="comment-img  float-left" alt="">
-                <h5><a href="">Kay Duggan</a> <a href="#" class="reply"><i class="icofont-reply"></i> Reply</a></h5>
-                <time datetime="2020-01-01">01 Jan, 2020</time>
-                <p>
-                  Dolorem atque aut. Omnis doloremque blanditiis quia eum porro quis ut velit tempore. Cumque sed quia ut maxime. Est ad aut cum. Ut exercitationem non in fugiat.
-                </p>
-
-              </div><!-- End comment #4 -->
-
+              @if(session('is_login') == true)
               <div class="reply-form">
                 <h4>Leave a Reply</h4>
-                <p>Your email address will not be published. Required fields are marked * </p>
-                <form action="">
+                <form id="post_comment" onsubmit="postCommment();return false;">
                   <div class="row">
-                    <div class="col-md-6 form-group">
-                      <input name="name" type="text" class="form-control" placeholder="Your Name*">
-                    </div>
-                    <div class="col-md-6 form-group">
-                      <input name="email" type="text" class="form-control" placeholder="Your Email*">
-                    </div>
-                  </div>
-                  <div class="row">
+                    {{ csrf_field() }}
+                    @foreach ($getId as $g)
+                    <input type="hidden" name="id_detail" value="{{$g->id}}" required>
+                    @endforeach
                     <div class="col form-group">
-                      <input name="website" type="text" class="form-control" placeholder="Your Website">
+                      <textarea name="komentar" class="form-control" placeholder="Your Comment*" required></textarea>
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="col form-group">
-                      <textarea name="comment" class="form-control" placeholder="Your Comment*"></textarea>
-                    </div>
-                  </div>
-                  <button type="submit" class="btn btn-primary">Post Comment</button>
+                  <input type="submit" value="Post Comment" class="btn btn-primary">
 
                 </form>
 
               </div>
-
+              @endif
             </div><!-- End blog comments -->
 
           </div><!-- End blog entries list -->
@@ -208,4 +147,31 @@
     </section><!-- End Blog Section -->
 
   </main>
+@endsection
+@section('js')
+    <script>
+      function postCommment() {
+        $.ajax({
+            headers: {
+                'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: "{{route('comment_article')}}",
+            processData: false,
+            contentType: false,
+            data: new FormData($('#post_comment')[0]),
+            type: 'post',
+            method: 'post'
+        }).done(function (data) {
+            if (data == 'error') {
+                Swal.fire(
+                    'error',
+                    'invalid form',
+                    'error'
+                );
+            }else{
+                location.reload();
+            }
+        })
+      }
+    </script>
 @endsection
