@@ -15,7 +15,7 @@
                 <a href="{{route('blogs')}}">Article</a>
             </li>
             <li class="@yield('nv-active')">
-              <a href="{{route('blogs')}}">Novel</a>
+              <a href="{{route('novel')}}">Novel</a>
             </li>
             @if (session('is_login') == true)
             <li class="@yield('cl-active')">

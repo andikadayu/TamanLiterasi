@@ -118,8 +118,8 @@
               <h3 class="sidebar-title">Categories</h3>
               <div class="sidebar-item categories">
                 <ul>
-                  <li><a href="#">Article <span>({{$jArt}})</span></a></li>
-                  <li><a href="#">Novel <span>({{$jNov}})</span></a></li>
+                  <li><a href="{{route('blogs')}}">Article <span>({{$jArt}})</span></a></li>
+                  <li><a href="{{route('novel')}}">Novel <span>({{$jNov}})</span></a></li>
                 </ul>
 
               </div><!-- End sidebar categories-->

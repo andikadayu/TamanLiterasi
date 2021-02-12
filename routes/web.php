@@ -34,7 +34,9 @@ Route::get('collection/article/delete', 'CollectionController@article_delete')->
 
 Route::get('collection/novel/add', 'CollectionController@add_novel')->name('add_novel');
 Route::post('collection/novel/add_process', 'CollectionController@novel_proccess')->name('novel_proccess');
-
+Route::get('collection/novel/{id}', 'CollectionController@collecion_novel')->name('collecion_novel');
+Route::get('collection/novel/{id}/episode', 'CollectionController@episode')->name('episode_view');
+Route::post('collection/novel/episode/proccess', 'CollectionController@add_proccess')->name('add_episode_proccess');
 
 Route::get('forums', 'ForumController@index')->name('forums');
 Route::post('forums/send', 'ForumController@chat_forums')->name('chat_forums');
@@ -43,3 +45,6 @@ Route::get('clear-cache', function () {
     Artisan::call('cache:clear');
     return 'success';
 });
+
+Route::get('novel', 'NovelController@index')->name('novel');
+Route::get('novel/{detail}', 'NovelController@detail')->name('detnovel');

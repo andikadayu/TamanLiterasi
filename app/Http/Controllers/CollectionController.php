@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\MArticle;
+use App\MEpisode;
 use App\MNovel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -12,8 +13,12 @@ class CollectionController extends Controller
 {
     public function index()
     {
-        $article = MArticle::join('user', 'user.id', '=', 'tb_artikel.upload_by')->where('upload_by', Session::get('id'))->orderBy('tb_artikel.id', 'DESC')->get();
+        $article = MArticle::select("tb_artikel.id as id", "name", "nama_artikel", "isi_artikel", "upload_at", "foto_artikel")
+            ->join('user', 'user.id', '=', 'tb_artikel.upload_by')->where('upload_by', Session::get('id'))->orderBy('tb_artikel.id', 'DESC')->get();
+        $novel = MNovel::select("tb_novel.id as id", "name", "nama_novel", "sinopsis", "published_at", "foto_novel")
+            ->join('user', 'user.id', '=', 'tb_novel.author')->where('author', Session::get('id'))->orderBy('tb_novel.id', 'DESC')->get();
         return view('blog.menu.collection', [
+            'novel' => $novel,
             'article' => $article
         ]);
     }
@@ -128,5 +133,57 @@ class CollectionController extends Controller
         } else {
             return 'error';
         }
+    }
+
+    public function collecion_novel($id)
+    {
+        $novel = MNovel::select('tb_novel.id as id', 'name', 'sinopsis', 'nama_novel', 'published_at', 'foto_novel', 'img')
+            ->join('user', 'user.id', '=', 'tb_novel.author')
+            ->where('tb_novel.id', base64_decode($id))
+            ->get();
+
+        $episode = MEpisode::join('tb_novel', 'tb_novel.id', 'tb_episode.id_novel')->where('id_novel', base64_decode($id))->paginate(10);
+        $Jepisode = MEpisode::where('id_novel', base64_decode($id))->count();
+
+        return view('blog.menu.collection_novel', [
+            'novel' => $novel,
+            'episode' => $episode,
+            'Jepisode' => $Jepisode
+        ]);
+    }
+
+    public function episode($id)
+    {
+        return view('blog.menu.add_episode', [
+            'id' => base64_decode($id)
+        ]);
+    }
+
+    public function add_proccess(Request $request)
+    {
+        $ep = $this->get_episode($request->input('id_novel'));
+        $episode = new MEpisode();
+        $episode->id_novel = $request->input('id_novel');
+        $episode->judul_episode = $request->input('judul_episode');
+        $episode->isi_episode = $request->input('isi_episode');
+        $episode->tanggal = date('Y-m-d H:i:s');
+        if ($ep == null || $ep == "") {
+            $episode->episode = 1;
+        } else {
+            $episode->episode = $ep->episode + 1;
+        }
+
+        $insert = $episode->save();
+
+        if ($insert) {
+            return 'success';
+        } else {
+            return 'error';
+        }
+    }
+
+    public function get_episode($id)
+    {
+        return MEpisode::where('id_novel', $id)->first();
     }
 }

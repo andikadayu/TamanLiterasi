@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\MArticle;
 use App\MComment;
+use App\MNovel;
 use Illuminate\Http\Request;
 use Session;
 
@@ -39,7 +40,7 @@ class BlogController extends Controller
 
 
         $jArt = MArticle::count();
-        $jNov = 0;
+        $jNov = MNovel::count();
 
         return view("blog.menu.detail_article", [
             'article' => $article,
