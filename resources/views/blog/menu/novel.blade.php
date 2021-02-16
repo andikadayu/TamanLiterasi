@@ -19,7 +19,8 @@
 
     <!-- ======= Blog Section ======= -->
     <section id="blog" class="blog">
-      <div class="container">
+      <h1 class="d-flex justify-content-center">Coming Soon</h1>
+      {{-- <div class="container">
 
         <div class="row">
 
@@ -65,7 +66,7 @@
           </div>
           
       
-      </div>
+      </div> --}}
     </section><!-- End Blog Section -->
 
   </main>
