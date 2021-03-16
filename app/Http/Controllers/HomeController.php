@@ -36,6 +36,7 @@ class HomeController extends Controller
             Session::put('email', $email);
             Session::put('img', $img);
             Session::put('gid', $gid);
+            Session::put('description', null);
         } else {
             Session::put('is_login', true);
             Session::put('id', $cek->id);
@@ -43,6 +44,7 @@ class HomeController extends Controller
             Session::put('email', $cek->email);
             Session::put('img', $cek->img);
             Session::put('gid', $cek->g_id);
+            Session::put('description', $cek->description);
         }
 
         if (Session::get('is_login') == true) {
@@ -56,5 +58,19 @@ class HomeController extends Controller
     {
         Session::flush();
         return 'success';
+    }
+
+    public function update_profile(Request $request)
+    {
+        $update = MUser::find(Session::get('id'));
+        $update->name = $request->input('name');
+        $update->description = $request->input('description');
+
+        $res = $update->save();
+        if ($res) {
+            return 'success';
+        } else {
+            return 'error';
+        }
     }
 }

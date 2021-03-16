@@ -45,9 +45,48 @@
   <!-- ======= Hero Section ======= -->
   @yield('content')
 
+
+  <!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Profile</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="update-profile" onsubmit="update_profile();return false;">
+          {{ csrf_field() }}
+          <div class="form-group">
+            <label for="">Nama</label>
+            <input type="text" name="name" id="name" value="{{session('name')}}" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="">Description</label>
+            <textarea name="description" cols="30" rows="5" class="form-control">{{session('description')}}</textarea>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
   <!-- ======= Footer ======= -->
   @include('blog.component.footer')
   <!-- End Footer -->
+
+
+
 
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
@@ -170,6 +209,29 @@ function login_oauth(id,name,img,email) {
     }).catch((error) => {
       console.log(error);
     });
+  }
+</script>
+
+<script>
+  function update_profile() {
+    $.ajax({
+      url: "{{route('update_profile')}}",
+      processData: false,
+      contentType: false,
+      data: new FormData($('#update-profile')[0]),
+      type: 'post',
+      method: 'post'
+    }).done(function (data) {
+      if (data == 'success') {
+        signOut();
+      } else {
+        Swal.fire(
+                    'error',
+                    'invalid form',
+                    'error'
+                );
+      }
+    })
   }
 </script>
 

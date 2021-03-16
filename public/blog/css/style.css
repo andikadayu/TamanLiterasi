@@ -2139,3 +2139,11 @@ section {
 #footer .credits a:hover {
   color: white;
 }
+
+#link-profiles a{
+  color : black;
+}
+
+#link-profiles a:hover{
+  color : red;
+}

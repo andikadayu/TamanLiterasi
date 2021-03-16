@@ -19,8 +19,8 @@
 
     <!-- ======= Blog Section ======= -->
     <section id="blog" class="blog">
-      <h1 class="d-flex justify-content-center">Coming Soon</h1>
-      {{-- <div class="container">
+      {{-- <h1 class="d-flex justify-content-center">Coming Soon</h1> --}}
+      <div class="container">
 
         <div class="row">
 
@@ -50,7 +50,7 @@
                         {!! $nv->sinopsis !!}
                     </div>
                   <div class="read-more">
-                    <a href="{{url()->current().'/' }}{{$nv->nama_novel}}">Read More</a>
+                    <a href="{{url()->current().'/'.$nv->nama_novel}}">Read More</a>
                   </div>
                 </div>
   
@@ -66,7 +66,8 @@
           </div>
           
       
-      </div> --}}
+      </div>
+<!-- Modal -->
     </section><!-- End Blog Section -->
 
   </main>

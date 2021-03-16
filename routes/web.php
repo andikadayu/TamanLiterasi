@@ -20,6 +20,7 @@ Route::get('/', function () {
 Route::get('login', 'HomeController@login')->name('login');
 Route::get('logout', 'HomeController@logout')->name('logout');
 Route::get('home', 'HomeController@index')->name('home');
+Route::post('update-profile', 'HomeController@update_profile')->name('update_profile');
 
 Route::get('article', 'BlogController@viewBlog')->name('blogs');
 Route::get('article/{detail}', 'BlogController@detailBlog')->name('detail_blogs');
@@ -48,3 +49,5 @@ Route::get('clear-cache', function () {
 
 Route::get('novel', 'NovelController@index')->name('novel');
 Route::get('novel/{detail}', 'NovelController@detail')->name('detnovel');
+Route::post('novel/comment', 'NovelController@comment_novel')->name('comment_novel');
+Route::get('novel/{detail}/{episode}', 'NovelController@episode')->name('detnovel');

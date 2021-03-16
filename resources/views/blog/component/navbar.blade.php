@@ -32,9 +32,10 @@
       @if (session('is_login')==false)
       <div data-onsuccess="onSignIn" class="ml-auto g-signin2" ></div>
       @else
-      <div class="ml-auto">
+      <div class="ml-auto" id="link-profiles">
         <img src="{{session('img')}}" class="rounded-circle float-left" style="width: 10%;height: 10%;" alt="">
-        {{session('name')}}
+        <a href="#" data-toggle="modal" data-target="#exampleModal">&nbsp;{{session('name')}}</a>
+        
         <a class="get-started-btn" onclick="signOut()">Logout</a>
       </div>
       @endif

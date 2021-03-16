@@ -12,9 +12,9 @@
         <div class="carousel-item active" style="background-image: url({{asset('blog/img/slide/slide-1.jpg')}})">
           <div class="carousel-container">
             <div class="container">
-              <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Sailor</span></h2>
-              <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-              <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+              <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Taman Literasi</span></h2>
+              <p class="animate__animated animate__fadeInUp">Selamat Datang di Taman Literasi Kelas 12 RPA Kelompok 2, di Website ini di harapkan siapa saja bisa menemukan artikel yang di butuhkan. Mulai dari Berita, Kisah-kisah, cerpen, Puisi dan lain sebagainya di harapkan di Website ini bisa untuk mengisi waktu kosong pengunjung yang menggunakan Website ini.</p>
+              <a href="#services" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
             </div>
           </div>
         </div>
@@ -23,9 +23,9 @@
         <div class="carousel-item" style="background-image: url({{asset('blog/img/slide/slide-2.jpg')}})">
           <div class="carousel-container">
             <div class="container">
-              <h2 class="animate__animated animate__fadeInDown">Lorem Ipsum Dolor</h2>
-              <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-              <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+              <h2 class="animate__animated animate__fadeInDown">Selamat Datang di Taman Literasi</h2>
+              <p class="animate__animated animate__fadeInUp">Selamat Datang di Taman Literasi Kelas 12 RPA Kelompok 2, di Website ini di harapkan siapa saja bisa menemukan artikel yang di butuhkan. Mulai dari Berita, Kisah-kisah, cerpen, Puisi dan lain sebagainya di harapkan di Website ini bisa untuk mengisi waktu kosong pengunjung yang menggunakan Website ini.</p>
+              <a href="#services" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
             </div>
           </div>
         </div>
@@ -34,9 +34,9 @@
         <div class="carousel-item" style="background-image: url({{asset('blog/img/slide/slide-3.jpg')}})">
           <div class="carousel-container">
             <div class="container">
-              <h2 class="animate__animated animate__fadeInDown">Sequi ea ut et est quaerat</h2>
-              <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-              <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+              <h2 class="animate__animated animate__fadeInDown">Selamat Datang di Taman Literasi</h2>
+              <p class="animate__animated animate__fadeInUp">Selamat Datang di Taman Literasi Kelas 12 RPA Kelompok 2, di Website ini di harapkan siapa saja bisa menemukan artikel yang di butuhkan. Mulai dari Berita, Kisah-kisah, cerpen, Puisi dan lain sebagainya di harapkan di Website ini bisa untuk mengisi waktu kosong pengunjung yang menggunakan Website ini.</p>
+              <a href="#services" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
             </div>
           </div>
         </div>
@@ -58,7 +58,7 @@
 
   <main id="main">
 
-    <!-- ======= About Section ======= -->
+    {{-- <!-- ======= About Section ======= -->
     <section id="about" class="about">
       <div class="container">
 
@@ -86,10 +86,10 @@
         </div>
 
       </div>
-    </section><!-- End About Section -->
+    </section><!-- End About Section --> --}}
 
     <!-- ======= Clients Section ======= -->
-    <section id="clients" class="clients section-bg">
+    {{-- <section id="clients" class="clients section-bg">
       <div class="container">
 
         <div class="row">
@@ -121,7 +121,7 @@
         </div>
 
       </div>
-    </section><!-- End Clients Section -->
+    </section><!-- End Clients Section --> --}}
 
     <!-- ======= Services Section ======= -->
     <section id="services" class="services">
@@ -135,44 +135,30 @@
         <div class="row">
           <div class="col-md-6">
             <div class="icon-box">
-              <i class="icofont-computer"></i>
-              <h4><a href="#">Lorem Ipsum</a></h4>
-              <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+              <i class="icofont-web"></i>
+              <h4><a href="#">Flexibility</a></h4>
+              <p>Bisa di akses dimanapun dan kapanpun karena berbentuk Website</p>
             </div>
           </div>
           <div class="col-md-6 mt-4 mt-md-0">
             <div class="icon-box">
-              <i class="icofont-chart-bar-graph"></i>
-              <h4><a href="#">Dolor Sitema</a></h4>
-              <p>Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+              <i class="icofont-gears"></i>
+              <h4><a href="#">Easy to Use</a></h4>
+              <p>Tampilan yang simple membuat aplikasi ini lebih mudah digunakan</p>
             </div>
           </div>
           <div class="col-md-6 mt-4 mt-md-0">
             <div class="icon-box">
-              <i class="icofont-image"></i>
-              <h4><a href="#">Sed ut perspiciatis</a></h4>
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+              <i class="icofont-speech-comments"></i>
+              <h4><a href="#">Interactive</a></h4>
+              <p>Dilengkapi fitur komentar serta fitur forums untuk berinteraksi dengan user lainnya</p>
             </div>
           </div>
           <div class="col-md-6 mt-4 mt-md-0">
             <div class="icon-box">
-              <i class="icofont-settings"></i>
-              <h4><a href="#">Nemo Enim</a></h4>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-            </div>
-          </div>
-          <div class="col-md-6 mt-4 mt-md-0">
-            <div class="icon-box">
-              <i class="icofont-earth"></i>
-              <h4><a href="#">Magni Dolore</a></h4>
-              <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
-            </div>
-          </div>
-          <div class="col-md-6 mt-4 mt-md-0">
-            <div class="icon-box">
-              <i class="icofont-tasks-alt"></i>
-              <h4><a href="#">Eiusmod Tempor</a></h4>
-              <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
+              <i class="icofont-learn"></i>
+              <h4><a href="#">Learn Togother</a></h4>
+              <p>Latih kreativiasmu dengan membuat karya sendiri dan mengunggahnya</p>
             </div>
           </div>
         </div>

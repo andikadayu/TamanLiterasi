@@ -66,7 +66,7 @@
                 <h4>{{$nv->name}}</h4>
                 
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum aspernatur id nobis quisquam error ipsam aperiam. Quod fuga, vero eveniet deserunt corrupti sapiente suscipit enim commodi voluptatem eum illo fugiat.
+                    {{$nv->description}}
                 </p>
             </div><!-- End blog author bio -->
             
